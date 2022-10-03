@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html>
+<script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+<!-- we import arjs version without NFT but with marker + location based support -->
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>GeoAR.js demo</title>
-  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-  <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-</head>
-
-<body>
-  <a-scene vr-mode-ui="enabled: false" arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;">
-    <a-text value="Eu te amoooo S2." look-at="[gps-camera]" scale="20 20 30" gps-entity-place="latitude: -23.600122; longitude: -46.497725;"></a-text>
-    <a-camera gps-camera rotation-reader> </a-camera>
+<body style="margin : 0px; overflow: hidden;">
+  <a-scene embedded arjs>
+    <a-marker preset="hiro">
+      <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
+      <a-entity position="0 0 0" scale="0.05 0.05 0.05" gltf-model="ar-web-marcacao.vercel.app/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"></a-entity>
+    </a-marker>
+    <a-entity camera></a-entity>
   </a-scene>
 </body>
-<!-- -22.855228; longitude: -47.067323; -->
 
 </html>
